@@ -1,10 +1,10 @@
 # Pokedex app made with React Native
 
+## Download last build APK
+
+https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40chiltepin/Pokedex-62b4a6d03a2f4743ab8fac61b509386a-signed.apk
+
 ## How it looks
-
-### Download last build APK
-
-https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40chiltepin/Pokedex-6042988b1c1c4f3297b12e5ee78f889c-signed.apk
 
 ### Pokemon List
 
