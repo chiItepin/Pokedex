@@ -7,6 +7,7 @@ import {
   Text,
 } from 'native-base';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import GlobalStyles from '../../styles/GlobalStyles';
 
@@ -15,12 +16,14 @@ const SearchField = ({
   setSearchValue,
   handleSearchSubmit,
   clearSearchField,
+  deviceLang,
+  translations,
 }) => (
   <View style={GlobalStyles.searchContainer}>
     <Item style={GlobalStyles.searchFieldContainer}>
       <Icon active name="search" style={GlobalStyles.searchFieldIcon} />
       <Input
-        placeholder="Search"
+        placeholder={translations?.[deviceLang]?.search ? translations[deviceLang].search : 'Search'}
         style={GlobalStyles.searchTextField}
         value={searchValue}
         onChangeText={(text) => setSearchValue(text)}
@@ -29,7 +32,7 @@ const SearchField = ({
       {
         searchValue !== '' && (
           <Button onPress={clearSearchField} transparent style={GlobalStyles.searchFieldClearBtn}>
-            <Text>Cancel</Text>
+            <Text>{translations?.[deviceLang]?.cancel ? translations[deviceLang].cancel : 'Cancel'}</Text>
           </Button>
         )
       }
@@ -42,6 +45,13 @@ SearchField.propTypes = {
   setSearchValue: PropTypes.func.isRequired,
   handleSearchSubmit: PropTypes.func.isRequired,
   clearSearchField: PropTypes.func.isRequired,
+  deviceLang: PropTypes.string.isRequired,
+  translations: PropTypes.object.isRequired,
 };
 
-export default SearchField;
+const mapStateToProps = (state) => ({
+  deviceLang: state.deviceLang,
+  translations: state.translations,
+});
+
+export default connect(mapStateToProps)(SearchField);

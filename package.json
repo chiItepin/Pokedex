@@ -1,6 +1,5 @@
 {
   "main": "node_modules/expo/AppEntry.js",
-  "nodePath": "src/",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -13,19 +12,21 @@
   "jest": {
     "preset": "jest-expo",
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*|native-base-*)"
+      "node_modules/(?!(@react-native|react-native|react-native-code-push)/)"
     ]
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
     "@expo/webpack-config": "^0.12.78",
     "@react-native-community/masked-view": "0.1.10",
+    "@react-native-community/netinfo": "^6.0.0",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
     "axios": "^0.21.1",
     "eslint-plugin-react-native": "^3.11.0",
     "expo": "~41.0.1",
     "expo-font": "~9.1.0",
+    "expo-localization": "^10.1.0",
     "expo-splash-screen": "~0.10.2",
     "expo-status-bar": "~1.0.4",
     "native-base": "^2.15.2",
@@ -38,7 +39,9 @@
     "react-native-reanimated": "~2.1.0",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 /**
  * usePokemon
+ * @param {number|undefined} id Pokemon Id
  * @returns {Object}
  */
 const usePokemon = (id) => {

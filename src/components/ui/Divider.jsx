@@ -21,7 +21,7 @@ const Divider = ({
       backgroundColor: '#fff',
       margin: 'auto',
       marginTop: -10,
-      width: 100,
+      width: 150,
       color: '#c7c7c7',
       paddingHorizontal: 8,
       textAlign: 'center',
