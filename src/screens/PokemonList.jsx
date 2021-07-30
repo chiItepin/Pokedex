@@ -22,22 +22,20 @@ const PokemonList = ({
     nextPage,
     isInitialPokemonsListLoaded,
     isPokemonsLoading,
+    getPokemon,
+    restartPokemonList,
   } = usePokemons();
   /**
    * handleSearchSubmit
    * @param {Object} event
    */
   const handleSearchSubmit = (event) => {
-    setFilteredPokemonList(
-      pokemons.filter((pokemon) => pokemon.name
-        .toLowerCase()
-        .includes(event.nativeEvent.text.toLowerCase())),
-    );
+    getPokemon(event.nativeEvent.text.toLowerCase());
   };
 
   const clearSearchField = () => {
     setSearchValue('');
-    setFilteredPokemonList(pokemons);
+    restartPokemonList();
   };
 
   /**
@@ -87,7 +85,7 @@ const PokemonList = ({
               keyExtractor={(pokemon) => pokemon.id.toString()}
               numColumns={3}
               columnWrapperStyle={GlobalStyles.contentColumnWrapper}
-              ListEmptyComponent={<Text style={{ textAlign: 'center' }}>Pokemon not found or has not been loaded</Text>}
+              ListEmptyComponent={<Text style={{ textAlign: 'center' }}>Pokemon not found</Text>}
               ListHeaderComponent={(
                 <SearchField
                   searchValue={searchValue}

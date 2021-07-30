@@ -13,10 +13,16 @@ const usePokemon = (id) => {
   const [isInitialPokemonsListLoaded, setIsInitialPokemonsListLoaded] = useState(false);
   const [nextPage, setNextPage] = useState(null);
 
-  const handleAllPokemonList = (pokemonList) => {
+  /**
+   * handleAllPokemonList
+   * @param {Array} pokemonList
+   * @param {boolean} doesRestart it handles whether list should be restarted or not
+   * @returns {void}
+   */
+  const handleAllPokemonList = (pokemonList, doesRestart = false) => {
     Promise.all(pokemonList.map((item) => axios.get(item.url)))
       .then((responses) => {
-        const updated = [...pokemons];
+        const updated = doesRestart ? [] : [...pokemons];
         responses.forEach((response) => {
           updated.push(response.data);
         });
@@ -31,14 +37,33 @@ const usePokemon = (id) => {
 
   /**
    * getPokemons
+   * @param {boolean} doesRestart
    * @returns {void}
    */
-  const getPokemons = () => {
+  const getPokemons = (doesRestart = false) => {
     setIsPokemonsLoading(true);
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=50')
       .then((response) => {
-        handleAllPokemonList(response.data.results);
+        handleAllPokemonList(response.data.results, doesRestart);
         setNextPage(response.data?.next ? response.data.next : null);
+      })
+      .catch(() => {
+        setIsPokemonsLoading(false);
+      });
+  };
+
+  /**
+ * getPokemon
+ * @param {string} pokemonId
+ * @returns {void}
+ */
+  const getPokemon = (pokemonId) => {
+    setIsPokemonsLoading(true);
+    setPokemons([]);
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .then((response) => {
+        setPokemons([response.data]);
+        setIsPokemonsLoading(false);
       })
       .catch(() => {
         setIsPokemonsLoading(false);
@@ -76,6 +101,11 @@ const usePokemon = (id) => {
       });
   };
 
+  const restartPokemonList = () => {
+    setPokemons([]);
+    getPokemons(true);
+  };
+
   useEffect(() => {
     if (!id) {
       getPokemons();
@@ -91,6 +121,8 @@ const usePokemon = (id) => {
     isInitialPokemonsListLoaded,
     getMorePokemons,
     pokemonData,
+    getPokemon,
+    restartPokemonList,
   };
 };
 
