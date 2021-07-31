@@ -44,13 +44,13 @@ const PokemonList = ({
    * @returns {React.ReactChild|undefined}
    */
   const renderListFooter = () => {
+    if (isPokemonsLoading) {
+      return <Spinner color="red" />;
+    }
+
+    if (searchValue) return undefined;
+
     if (filteredPokemonList.length && nextPage) {
-      if (isPokemonsLoading) {
-        return <Spinner color="red" />;
-      }
-
-      if (searchValue) return undefined;
-
       return (
         <Button
           disabled={isPokemonsLoading}
@@ -85,7 +85,7 @@ const PokemonList = ({
               keyExtractor={(pokemon) => pokemon.id.toString()}
               numColumns={3}
               columnWrapperStyle={GlobalStyles.contentColumnWrapper}
-              ListEmptyComponent={<Text style={{ textAlign: 'center' }}>Pokemon not found</Text>}
+              ListEmptyComponent={!isPokemonsLoading && <Text style={{ textAlign: 'center' }}>Pokemon not found</Text>}
               ListHeaderComponent={(
                 <SearchField
                   searchValue={searchValue}

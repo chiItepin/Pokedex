@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { Col, Grid } from 'react-native-easy-grid';
+import { LinearGradient } from 'expo-linear-gradient';
 import GlobalStyles from '../../styles/GlobalStyles';
 
 const PokemonStat = ({
@@ -15,11 +16,16 @@ const PokemonStat = ({
     </Col>
     <Col style={GlobalStyles.sideStatBarCol}>
       <View style={GlobalStyles.sideStatsBar}>
-        <View style={[GlobalStyles.sideStatsBarFilled, { width }]}>
+        <LinearGradient
+          start={[0, 1]}
+          end={[1, 0]}
+          colors={['rgb(123, 87, 208)', 'rgb(149, 175, 239)']}
+          style={[GlobalStyles.sideStatsBarFilled, { width }]}
+        >
           <View style={GlobalStyles.sideStatsBarTooltip}>
             <Text style={GlobalStyles.sideStatsBarTooltipText}>{statValue}</Text>
           </View>
-        </View>
+        </LinearGradient>
       </View>
     </Col>
   </Grid>

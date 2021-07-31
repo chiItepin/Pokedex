@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     height: 15,
   },
   sideStatsBarFilled: {
-    backgroundColor: '#5779d0',
+    // backgroundColor: '#5779d0',
     borderRadius: 6,
     height: '100%',
     width: '50%',
