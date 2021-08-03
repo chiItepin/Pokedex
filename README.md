@@ -2,7 +2,7 @@
 
 ## Download last build APK
 
-https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40chiltepin/Pokedex-62b4a6d03a2f4743ab8fac61b509386a-signed.apk
+https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40chiltepin/Pokedex-ac91302b0e4c4b0d9027d536f96cb7fe-signed.apk
 
 ## How it looks
 
@@ -10,11 +10,11 @@ https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40chiltepin/Pok
 
 <img src="https://i.imgur.com/sYFVZ2k.png" alt="Pokemon List" />
 
-<img src="https://i.imgur.com/KxXb3h3.png" alt="Pokemon List" />
+<img src="https://i.imgur.com/FEO2WAH.png" alt="Pokemon List Search" />
 
 ### Pokemon View
 
-<img src="https://i.imgur.com/80Mhcsa.png" alt="Pokemon View" />
+<img src="https://i.imgur.com/jkkZhfj.png" alt="Pokemon View" />
 
 ## What it does
 
