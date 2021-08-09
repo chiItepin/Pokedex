@@ -162,6 +162,23 @@ const styles = StyleSheet.create({
   sideStatsBarTooltipText: {
     fontWeight: '600',
   },
+  berryCard: {
+    flex: 1,
+    marginVertical: 2,
+    marginHorizontal: 10,
+  },
+  berryFlavorContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+  },
+  berryFlavorItem: {
+    width: '100%',
+    marginVertical: 4,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
 });
 
 export default styles;

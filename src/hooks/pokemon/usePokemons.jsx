@@ -10,6 +10,8 @@ const usePokemon = (id) => {
   const [pokemons, setPokemons] = useState([]);
   const [pokemonData, setPokemonData] = useState({});
   const [isPokemonsLoading, setIsPokemonsLoading] = useState(false);
+  const [isPokemonBerriesLoading, setIsPokemonBerriesLoading] = useState(false);
+  const [pokemonBerries, setPokemonBerries] = useState([]);
   const [isInitialPokemonsListLoaded, setIsInitialPokemonsListLoaded] = useState(false);
   const [nextPage, setNextPage] = useState(null);
 
@@ -49,6 +51,28 @@ const usePokemon = (id) => {
       })
       .catch(() => {
         setIsPokemonsLoading(false);
+      });
+  };
+
+  const getAllPokemonBerries = () => {
+    setIsPokemonBerriesLoading(true);
+    axios.get('https://pokeapi.co/api/v2/berry?limit=100')
+      .then((response) => {
+        Promise.all(response.data.results.map((item) => axios.get(item.url)))
+          .then((responses) => {
+            const updated = [];
+            responses.forEach((res) => {
+              updated.push(res.data);
+            });
+            setIsPokemonBerriesLoading(false);
+            setPokemonBerries(updated);
+          })
+          .catch(() => {
+            setIsPokemonBerriesLoading(false);
+          });
+      })
+      .catch(() => {
+        setIsPokemonBerriesLoading(false);
       });
   };
 
@@ -123,6 +147,9 @@ const usePokemon = (id) => {
     pokemonData,
     getPokemon,
     restartPokemonList,
+    getAllPokemonBerries,
+    pokemonBerries,
+    isPokemonBerriesLoading,
   };
 };
 
